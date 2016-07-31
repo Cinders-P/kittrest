@@ -14,7 +14,7 @@ module.exports = (passport) => {
 	passport.use('twitter', new TwitterStrategy({
 		consumerKey: process.env.CONSUMER_KEY,
 		consumerSecret: process.env.CONSUMER_SECRET,
-		callbackURL: 'http://127.0.0.1:3000/auth/twitter/callback',
+		callbackURL: 'https://kittrest.herokuapp.com/auth/twitter/callback',
 	}, (token, tokenSecret, profile, done) => {
 		process.nextTick(() => {
 			User.findOne({ id: profile.id }, (err, user) => {
