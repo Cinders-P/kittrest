@@ -171,8 +171,11 @@ app.post('/post', (req, res) => {
 		});
 	});
 });
-app.use((req, res) => {
+app.use('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '/home.html'));
+});
+app.use((req, res) => {
+	res.redirect('/');
 });
 
 app.listen(process.env.PORT || 3000, () => { console.log('Running.'); });
