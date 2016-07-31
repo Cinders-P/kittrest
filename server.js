@@ -46,9 +46,6 @@ app.get('/auth/twitter/callback', passport.authenticate('twitter', {
 	successRedirect: '/',
 	failureRedirect: '/',
 }));
-app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname, '/home.html'));
-});
 app.get('/user', (req, res) => {
 	if (req.isAuthenticated()) {
 		res.json(req.user);
@@ -173,6 +170,9 @@ app.post('/post', (req, res) => {
 			res.json(pins);
 		});
 	});
+});
+app.use((req, res) => {
+	res.sendFile(path.join(__dirname, '/home.html'));
 });
 
 app.listen(process.env.PORT || 3000, () => { console.log('Running.'); });
